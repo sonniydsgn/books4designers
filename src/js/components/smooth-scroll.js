@@ -71,24 +71,22 @@ ScrollTrigger.scrollerProxy(pageContainer, {
 
 
 // HORIZONTAL SCROLL
-window.addEventListener("load", function () {
-  let libraryList = document.querySelector('.library__list');
-  let getToValue = () => -(libraryList.scrollWidth - window.innerWidth);
+let libraryList = document.querySelector('.library__list');
+let getToValue = () => -(libraryList.scrollWidth - window.innerWidth);
 
-  gsap.to('.library__list', {
-    x: getToValue(),
-    ease: "none",
-    scrollTrigger: {
-      scroller: pageContainer,
-      scrub: true,
-      trigger: '.library',
-      pin: true,
-      start: "bottom bottom",
-      end: () => "+=" + libraryList.scrollWidth
-    }
-  });
-
-  ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
-  ScrollTrigger.refresh();
+gsap.to('.library__list', {
+  x: getToValue(),
+  ease: "none",
+  scrollTrigger: {
+    scroller: pageContainer,
+    scrub: true,
+    trigger: '.library',
+    pin: true,
+    start: "bottom bottom",
+    end: () => "+=" + libraryList.scrollWidth
+  }
 });
+
+ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+ScrollTrigger.refresh();
 
