@@ -8,7 +8,6 @@ export default class Cursor {
   constructor(el) {
     // Varibles
     this.Cursor = el;
-    this.Cursor.style.opacity = 0;
     this.Link = document.querySelectorAll("a");
     this.Item = document.querySelectorAll(".footer-booktable__item");
     this.bounds = this.Cursor.getBoundingClientRect();
@@ -20,12 +19,6 @@ export default class Cursor {
       this.cursorConfigs.x.previous = this.cursorConfigs.x.current = mouse.x;
       this.cursorConfigs.y.previous = this.cursorConfigs.y.previous = mouse.y;
 
-      // Set cursor opacity to 1 when hovered on screen
-      gsap.to(this.Cursor, {
-        duration: 1,
-        ease: "Power3.easeOut",
-        opacity: 1,
-      });
       // Execute scale function
       this.onScaleMouse();
 

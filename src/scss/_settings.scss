@@ -22,10 +22,11 @@ p {
   height: 100%;
   font-family: var(--font-family);
   -webkit-text-size-adjust: 100%;
+  background-color: var(--color-bg);
 }
 
 .page__body {
-  // @include image-set("../img/noise-bg");
+  @include image-set("../img/noise-bg");
 
   margin: 0;
   min-width: 320px;
