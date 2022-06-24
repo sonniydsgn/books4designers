@@ -22,6 +22,8 @@ if (!isDesktop()) {
 const locoScroll = new locomotiveScroll({
   el: pageContainer,
   smooth: true,
+  multiplier: 1,
+  touchMultiplier: 4,
   smartphone: {
     smooth: true
   },
