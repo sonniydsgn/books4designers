@@ -1,0 +1,117 @@
+.library {
+  overflow: hidden;
+  margin-bottom: 275px;
+  padding-top: 260px;
+  width: 100%;
+  max-height: 1155px;
+
+  &__list {
+    display: flex;
+  }
+
+  @include laptop {
+    margin-bottom: 250px;
+  }
+
+  @include large-tablet {
+    margin-bottom: 150px;
+    padding-top: 160px;
+    max-height: 760px;
+  }
+
+  @include tablet {
+    margin-bottom: 100px;
+  }
+
+  @include small-mobile {
+    padding-top: 100px;
+    max-height: 700px;
+  }
+}
+
+.library-item {
+  @include flex-v-center;
+
+  flex-direction: column;
+  padding: 200px 20px 80px;
+  min-width: 465px;
+  min-height: 1100px;
+  transition: transform 0.5s ease;
+
+  &__title {
+    margin-bottom: 30px;
+    text-align: center;
+    color: currentColor;
+  }
+
+  &__author {
+    font-size: 18px;
+    line-height: 100%;
+    text-align: center;
+    color: currentColor;
+    opacity: 0.7;
+  }
+
+  &__arrow {
+    margin-top: auto;
+    width: 32px;
+    height: 210px;
+    fill: currentColor;
+  }
+
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  &:hover {
+    transform: translateY(-260px);
+  }
+
+  &--dkdnd {
+    color: var(--color-primary);
+    background-color: var(--color-orange);
+  }
+
+  &--ic {
+    color: var(--color-bg);
+    background-color: var(--color-red);
+  }
+
+  &--tvevideod {
+    color: var(--color-primary);
+    background-color: var(--color-gray);
+  }
+
+  &--nzmd {
+    color: var(--color-bg);
+    background-color: var(--color-darkred);
+  }
+
+  &--ssp {
+    color: var(--color-primary);
+    background-color: var(--color-yellow);
+  }
+
+  &--kknss {
+    color: var(--color-bg);
+    background-color: var(--color-darkgray);
+  }
+
+  @include large-tablet {
+    padding: 160px 10px 60px;
+    min-width: 350px;
+    min-height: 700px;
+
+    &:hover {
+      transform: translateY(-160px);
+    }
+  }
+
+  @include small-mobile {
+    min-width: 100%;
+
+    &:hover {
+      transform: translateY(-100px);
+    }
+  }
+}

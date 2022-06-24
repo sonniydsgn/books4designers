@@ -1,0 +1,156 @@
+.footer {
+  padding-bottom: 60px;
+
+  &__inner {
+    @include flex-all-center;
+
+    flex-direction: column;
+  }
+
+  &__image {
+    pointer-events: none;
+  }
+
+  &__header {
+    position: relative;
+    margin-bottom: 100px;
+
+    @include tablet {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    right: 0;
+    top: 25px;
+    max-width: 165px;
+    font-size: 16px;
+    text-align: right;
+    color: var(--color-primary);
+    opacity: 0.7;
+
+    @include large-tablet {
+      top: 15px;
+    }
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  @include large-tablet {
+    padding-bottom: 40px;
+  }
+}
+
+.footer-booktable {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 120px;
+
+  &__item {
+    display: flex;
+    border-top: 1px solid var(--color-primary);
+
+    &:last-child {
+      border-bottom: 1px solid var(--color-primary);
+    }
+  }
+
+  &__link {
+    @include flex-all-sb;
+
+    padding: 20px 30px;
+    width: 100%;
+    transition: background-color 0.2s ease;
+
+    &:hover,
+    &.focus-visible {
+      background-color: var(--color-gray);
+    }
+
+    @include tablet {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px 30px 20px 20px;
+    }
+  }
+
+  &__author {
+    font-size: 16px;
+    color: var(--color-primary);
+    opacity: 0.6;
+
+    @include tablet {
+      margin-bottom: 5px;
+    }
+  }
+
+  &__name {
+    width: 435px;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--color-primary);
+
+    @include tablet {
+      width: auto;
+    }
+  }
+
+  @include tablet {
+    margin-bottom: 100px;
+  }
+}
+
+.footer-copyright {
+  @include flex-all-sb;
+
+  &__author {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__post {
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--color-primary);
+    opacity: 0.6;
+  }
+
+  &__name {
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--color-primary);
+  }
+
+  @include tablet {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.footer-social {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 20px;
+
+  @include tablet {
+    gap: 10px;
+  }
+
+  @include small-mobile {
+    grid-auto-flow: row;
+    width: 100%;
+  }
+}

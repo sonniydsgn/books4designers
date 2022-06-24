@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+@include('partials/head.html')
+<body class="page__body">
+  <div class="cursor">
+    <div class="cursor-media">
+      <picture id="dkdnd">
+        <source srcset="img/dkdnd-img.avif" type="image/avif">
+        <source srcset="img/dkdnd-img.webp" type="image/webp">
+        <img loading="lazy" src="img/dkdnd-img.jpg" width="150" height="214" alt="" aria-hidden="true">
+      </picture>
+      <picture id="ic">
+        <source srcset="img/ic-img.avif" type="image/avif">
+        <source srcset="img/ic-img.webp" type="image/webp">
+        <img loading="lazy" src="img/ic-img.jpg" width="150" height="150" alt="" aria-hidden="true">
+      </picture>
+      <picture id="kknss">
+        <source srcset="img/kknss-img.avif" type="image/avif">
+        <source srcset="img/kknss-img.webp" type="image/webp">
+        <img loading="lazy" src="img/kknss-img.jpg" width="150" height="214" alt="" aria-hidden="true">
+      </picture>
+      <picture id="nzmd">
+        <source srcset="img/nzmd-img.avif" type="image/avif">
+        <source srcset="img/nzmd-img.webp" type="image/webp">
+        <img loading="lazy" src="img/nzmd-img.jpg" width="150" height="214" alt="" aria-hidden="true">
+      </picture>
+      <picture id="ssp">
+        <source srcset="img/ssp-img.avif" type="image/avif">
+        <source srcset="img/ssp-img.webp" type="image/webp">
+        <img loading="lazy" src="img/ssp-img.jpg" width="150" height="214" alt="" aria-hidden="true">
+      </picture>
+      <picture id="tvevideod">
+        <source srcset="img/tvevideod-img.avif" type="image/avif">
+        <source srcset="img/tvevideod-img.webp" type="image/webp">
+        <img loading="lazy" src="img/tvevideod-img.jpg" width="150" height="214" alt="" aria-hidden="true">
+      </picture>
+    </div>
+  </div>
+  @include('partials/header.html')
+  <div class="site-container" data-scroll-container>
+    <main class="main">
+      @include('partials/hero.html')
+      @include('partials/library.html')
+      @include('partials/book-dkdnd.html')
+      @include('partials/book-ic.html')
+      @include('partials/book-tvevideod.html')
+      @include('partials/book-nzmd.html')
+      @include('partials/book-ssp.html')
+      @include('partials/book-kknss.html')
+    </main>
+    @include('partials/footer.html')
+  </div>
+</body>
+</html>

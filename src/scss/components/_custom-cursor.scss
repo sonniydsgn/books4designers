@@ -1,0 +1,48 @@
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  contain: layout style size;
+  mix-blend-mode: exclusion;
+  pointer-events: none;
+
+  &::before {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    background: var(--color-bg);
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease;
+
+    @include large-tablet {
+      display: hidden;
+      width: 0;
+      height: 0;
+    }
+  }
+
+  .cursor-media {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 350px;
+    height: 350px;
+
+    picture {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &.hover {
+    &::before {
+      transform: translate(-50%, -50%) scale(4);
+    }
+  }
+}
