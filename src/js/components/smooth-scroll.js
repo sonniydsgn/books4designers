@@ -1,20 +1,41 @@
 // IMPORTS
+const pageContainer = document.querySelector("[data-scroll-container]")
+const parallaxSpeed = document.querySelectorAll("[data-scroll-speed]")
 import locomotiveScroll from "locomotive-scroll";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { isDesktop } from "../functions/check-viewport";
 gsap.registerPlugin(ScrollTrigger);
+
+
+
+// DESKTOP CHECK
+if (!isDesktop()) {
+  parallaxSpeed.forEach(el => {
+    delete el.dataset.scrollSpeed;
+  })
+}
+
 
 
 // SMOOTH SCROLL
 const locoScroll = new locomotiveScroll({
-  el: document.querySelector("[data-scroll-container]"),
-  smooth: true
+  el: pageContainer,
+  smooth: true,
+  smartphone: {
+    smooth: true
+  },
+  tablet: {
+    smooth: true
+  }
 });
+
+locoScroll.on("scroll", ScrollTrigger.update);
+
 
 
 // ANCHORS SCROLL
 const anchorLinks = document.querySelectorAll('a[href^=\\#]:not([href$=\\#])');
-
 anchorLinks.forEach((anchorLink) => {
   let hashval = anchorLink.getAttribute('href');
   let target = document.querySelector(hashval);
@@ -28,38 +49,46 @@ anchorLinks.forEach((anchorLink) => {
 });
 
 
+
 // SYNC LOCOMOTIVE & GSAP
-ScrollTrigger.scrollerProxy("[data-scroll-container]", {
+ScrollTrigger.scrollerProxy(pageContainer, {
   scrollTop(value) {
-    return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+    return arguments.length
+      ? locoScroll.scrollTo(value, 0, 0)
+      : locoScroll.scroll.instance.scroll.y;
   },
   getBoundingClientRect() {
-    return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
+    return {
+      left: 0,
+      top: 0,
+      width: window.innerWidth,
+      height: window.innerHeight
+    };
   },
-  pinType: document.querySelector("[data-scroll-container]").style.transform ? "transform" : "fixed"
+  pinType: pageContainer.style.transform ? "transform" : "fixed"
 });
+
 
 
 // HORIZONTAL SCROLL
-let libraryList = document.querySelector('.library__list');
-let getToValue = () => -(libraryList.scrollWidth - window.innerWidth);
+window.addEventListener("load", function () {
+  let libraryList = document.querySelector('.library__list');
+  let getToValue = () => -(libraryList.scrollWidth - window.innerWidth);
 
-gsap.fromTo(libraryList,
-  { x: 0 },
-  { x: getToValue(),
-  ease: "none",
-  scrollTrigger: {
-    trigger: '.library',
-    scroller: '[data-scroll-container]',
-    start: "bottom bottom",
-    end: () => "+=" + libraryList.scrollWidth,
-    pin: true,
-    scrub: true,
-  }
+  gsap.to('.library__list', {
+    x: getToValue(),
+    ease: "none",
+    scrollTrigger: {
+      scroller: pageContainer,
+      scrub: true,
+      trigger: '.library',
+      pin: true,
+      start: "bottom bottom",
+      end: () => "+=" + libraryList.scrollWidth
+    }
+  });
+
+  ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+  ScrollTrigger.refresh();
 });
 
-
-// UPDATES LOCOMOTIVE & GSAP
-locoScroll.on("scroll", ScrollTrigger.update);
-ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
-ScrollTrigger.refresh();
