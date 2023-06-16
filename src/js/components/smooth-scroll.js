@@ -23,12 +23,8 @@ const locoScroll = new locomotiveScroll({
   el: pageContainer,
   smooth: true,
   multiplier: 1,
-  touchMultiplier: 4,
-  smartphone: {
-    smooth: true
-  },
   tablet: {
-    smooth: true
+    smooth: false
   }
 });
 
